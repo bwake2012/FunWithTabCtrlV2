@@ -17,3 +17,7 @@ The call to `setTabBarHidden` does not seem to change the `isHidden` state of th
         tabBarController.tabBar.isHidden = tabBarIsHidden
     }
 ```
+
+
+https://github.com/user-attachments/assets/f713c194-92bd-4de2-a98d-e43e0702af82
+
