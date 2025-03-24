@@ -1,6 +1,6 @@
-// TabBarController.swift
+// PushedTabBarController.swift
 //
-// Created by Bob Wakefield on 3/16/25.
+// Created by Bob Wakefield on 3/24/25.
 // for FunWithTabCtrlV2
 //
 // Using Swift 6.0
@@ -11,14 +11,15 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class PushedTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        viewControllers?[0].tabBarItem = UITabBarItem(title: "Item 1", image: UIImage(systemName: "1.circle"), tag: 1)
-        viewControllers?[1].tabBarItem = UITabBarItem(title: "Item 2", image: UIImage(systemName: "2.circle"), tag: 2)
+        viewControllers?[0].tabBarItem = UITabBarItem(title: "Item 1", image: UIImage(systemName: "1.square"), tag: 1)
+        viewControllers?[1].tabBarItem = UITabBarItem(title: "Item 2", image: UIImage(systemName: "2.square"), tag: 2)
+        viewControllers?[2].tabBarItem = UITabBarItem(title: "Item 3", image: UIImage(systemName: "3.square"), tag: 3)
     }
     
 

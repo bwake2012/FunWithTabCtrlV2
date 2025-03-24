@@ -17,7 +17,11 @@ class PushedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tabBarController?.tabBar.isHidden = true
+        if #available(iOS 18.0, visionOS 2.0, *) {
+            tabBarController?.setTabBarHidden(true, animated: true)
+        } else {
+            tabBarController?.tabBar.isHidden = true
+        }
    }
     
 

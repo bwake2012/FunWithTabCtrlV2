@@ -13,14 +13,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private var tabBarIsHidden: Bool = false
+
     @IBOutlet weak var buttonHideTabs: UIButton?
 
     @IBAction func onHideTabs(_ sender: UIButton) {
         guard let tabBarController = self.tabBarController else {
             return
         }
-        tabBarController.tabBar.isHidden.toggle()
-        sender.setTitle(tabBarController.tabBar.isHidden ? "Show Tabs" : "Hide Tabs", for: .normal)
+
+        tabBarIsHidden.toggle()
+        if #available(iOS 18.0, visionOS 2.0, *) {
+            tabBarController.setTabBarHidden(!tabBarController.tabBar.isHidden, animated: true)
+        } else {
+            tabBarController.tabBar.isHidden = tabBarIsHidden
+        }
+        sender.setTitle(tabBarIsHidden ? "Show Tabs" : "Hide Tabs", for: .normal)
     }
 
     override func viewDidLoad() {
@@ -32,7 +40,14 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        tabBarController?.tabBar.isHidden = false
+        tabBarIsHidden = false
+
+        if #available(iOS 18.0, visionOS 2.0, *) {
+            tabBarController?.setTabBarHidden(tabBarIsHidden, animated: true)
+        } else {
+            tabBarController?.tabBar.isHidden = tabBarIsHidden
+        }
+//
         buttonHideTabs?.setTitle("Hide Tabs", for: .normal)
     }
 
